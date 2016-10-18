@@ -12,7 +12,7 @@ use DB;
 class SoldItemsController extends Controller
 {
     public function getAllItem() {
-      $data['sold_i']   = SoldItems::get();
+      $data['sold_i']   = SoldItems::orderBy('added_at', 'decs')->get();
 
       return view ('front.json.sold_item', $data);
     }

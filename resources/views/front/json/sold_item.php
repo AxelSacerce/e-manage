@@ -14,7 +14,10 @@ header('Content-type: application/json; charset=UTF-8');
 
 
 foreach($sold_i as $row) {
-  $data[] = gmdate('Y,m,d', strtotime($row['added_at']));
+  $qty      = $row['item_quantity'];
+  $datetime = $row['added_at'];
+  $added_at = strtotime($datetime)*1000;
+  $data[]   = [$added_at, $qty];
 }
 echo json_encode($data);
 
