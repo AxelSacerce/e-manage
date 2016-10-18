@@ -14,9 +14,11 @@ Email me for database, haven't time to create migrations
 - composer install
 - composer update
 - php artisan key:generate
+- create database (database name: e-manage)
 - php artisan migrate
 - php artisan db:seed
 - php artisan serve (Server running on http://localhost:8080)
+- require internet connection for running
 
 # mockups
 
