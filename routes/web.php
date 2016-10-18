@@ -47,3 +47,4 @@ Route::get('/items/in-warehouse/add', [
   'middleware'  => ['auth'],
   'uses'        => 'Front\WarehouseItemsController@in_warehouse_add',
 ]);
+Route::get('/chart', ['uses' => 'Front\SoldItemsController@getAllItem']);

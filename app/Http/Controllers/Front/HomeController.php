@@ -10,6 +10,7 @@ use Redirect;
 use Session;
 use DB;
 use DateTime;
+use App\Items\SoldItems;
 
 class HomeController extends Controller
 {
@@ -22,7 +23,8 @@ class HomeController extends Controller
         $data['recent_items']       = $item_in_warehouse->union($sold_item)
                                     -> orderBy('added_at', 'asc')
                                     -> get();
-        
+        $data['sold_i']             = SoldItems::get();
+
         return view('front.index', $data);
     }
 

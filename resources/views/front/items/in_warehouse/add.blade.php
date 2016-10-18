@@ -21,7 +21,7 @@
           <div class="form-group">
             <label for="item_quantity" class="col-md-4 control-label">Quantity</label>
               <div class="col-md-6">
-                  <input id="item_quantity" type="text" class="form-control" name="item_quantity" value="" required autofocus>
+                  <input id="item_quantity" type="number" class="form-control" name="item_quantity" value="" min="1" required autofocus>
               </div>
           </div>
 

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,6 +26,7 @@
 
     <!-- JAVASCRIPT -->
       <!-- START OF SECTION CUSTOM JAVASCRIPT -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         @yield('custom_js_top')
       <!-- END OF SECTION CUSTOM JAVASCRIPT -->
     <!-- END OF JAVASCRIPT -->
@@ -77,7 +76,7 @@
             @endif
             @if(Auth::check())
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <img class="avatar" src="https://avatars1.githubusercontent.com/u/7555972?v=3&s=466">&nbsp;
                  {{ Auth::user()->name }} <span class="caret"></span>
               </a>
@@ -97,16 +96,16 @@
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-    </nav>
+      </nav>
     <!-- START OF SECTION MAIN -->
       <div id="wrapper">
         @yield('main')
       </div>
     <!-- END OF SECTION MAIN -->
-    <footer>
+    <footer id="footer">
       <div>
         <center>
-          <a href="">Contribute</a>
+          <a href="https://github.com/noric1902/e-manage" data-toggle="tooltip" data-placement="top" title="Send an issue to contribute">Contribute</a>
           <a href="">Copyright <!--(DMCA)--></a>
           <a href="https://github.com/noric1902">@noric1902</a>
         </center>
@@ -119,7 +118,38 @@
       </div>
     </footer>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(window).bind("load", function() {
+       var footerHeight = 0,
+           footerTop = 0,
+           $footer = $("#footer");
+       positionFooter();
+       function positionFooter() {
+         footerHeight = $footer.height();
+         footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
+
+         if ( ($(document.body).height()+footerHeight) < $(window).height()) {
+           $footer.css({
+             position: "absolute"
+           }).animate({
+             top: footerTop
+           })
+         } else {
+           $footer.css({
+             position: "static"
+           })
+         }
+       }
+       $(window)
+       .scroll(positionFooter)
+       .resize(positionFooter)
+     });
+
+      // Tooltip
+      $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
     <script src="{{ asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- START OF SECTION CUSTOM JAVASCRIPT -->
       @yield('custom_js_bottom')
