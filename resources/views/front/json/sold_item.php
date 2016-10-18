@@ -19,7 +19,7 @@ foreach($sold_i as $row) {
   $added_at = strtotime($datetime)*1000;
   $data[]   = [$added_at, $qty];
 }
-echo json_encode($data);
+echo json_encode($data, JSON_NUMERIC_CHECK);
 
 
 // $arrdata  = array();

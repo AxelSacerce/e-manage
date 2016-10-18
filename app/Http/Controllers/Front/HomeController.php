@@ -21,7 +21,7 @@ class HomeController extends Controller
         $sold_item                  = DB::table('sold_item');
         $item_in_warehouse          = DB::table('item_in_warehouse');
         $data['recent_items']       = $item_in_warehouse->union($sold_item)
-                                    -> orderBy('added_at', 'asc')
+                                    -> orderBy('added_at', 'decs')
                                     -> get();
 
         return view('front.index', $data);

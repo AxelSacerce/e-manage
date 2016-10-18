@@ -128,7 +128,7 @@ use App\Http\Controllers\Front\HomeController;
             },
             series: [{
                 type: 'area',
-                name: 'Income',
+                name: 'Quantity',
                 data: data
             }]
         });
