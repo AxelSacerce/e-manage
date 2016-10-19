@@ -11,7 +11,7 @@ Email me for database, haven't time to create migrations
 # setup
 
 - git clone https://github.com/noric1902/e-manage.git
-- composer install
+- run `composer install`
 - composer update
 - php artisan key:generate
 - create database (database name: e-manage)
