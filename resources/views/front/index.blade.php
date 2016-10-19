@@ -129,7 +129,7 @@ use App\Http\Controllers\Front\HomeController;
                 }
             },
             series: [{
-                type: 'area',
+                type: 'line',
                 name: 'Quantity',
                 data: data
             }]
