@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use App\Items\WarehouseItems;
 
 class ItemController extends Controller

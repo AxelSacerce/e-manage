@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Auth;
+use DateTime;
+use DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Redirect;
 use Session;
-use DB;
-use DateTime;
-use App\Items\SoldItems;
 
 class HomeController extends Controller
 {
@@ -18,11 +17,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        $sold_item                  = DB::table('sold_item');
-        $item_in_warehouse          = DB::table('item_in_warehouse');
-        $data['recent_items']       = $item_in_warehouse->union($sold_item)
-                                    -> orderBy('added_at', 'decs')
-                                    -> get();
+        $sold_item = DB::table('sold_item');
+        $item_in_warehouse = DB::table('item_in_warehouse');
+        $data['recent_items'] = $item_in_warehouse->union($sold_item)
+                                    ->orderBy('added_at', 'decs')
+                                    ->get();
 
         return view('front.index', $data);
     }
@@ -69,15 +68,16 @@ class HomeController extends Controller
         return Redirect::to('/login');
     }
 
-    public static function time_elapsed_string($datetime, $full = false) {
-        $now = new DateTime;
+    public static function time_elapsed_string($datetime, $full = false)
+    {
+        $now = new DateTime();
         $ago = new DateTime($datetime);
         $diff = $now->diff($ago);
 
         $diff->w = floor($diff->d / 7);
         $diff->d -= $diff->w * 7;
 
-        $string = array(
+        $string = [
             'y' => 'year',
             'm' => 'month',
             'w' => 'week',
@@ -85,16 +85,19 @@ class HomeController extends Controller
             'h' => 'hour',
             'i' => 'minute',
             's' => 'second',
-        );
+        ];
         foreach ($string as $k => &$v) {
             if ($diff->$k) {
-                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+                $v = $diff->$k.' '.$v.($diff->$k > 1 ? 's' : '');
             } else {
                 unset($string[$k]);
             }
         }
 
-        if (!$full) $string = array_slice($string, 0, 1);
-        return $string ? implode(', ', $string) . ' ago' : 'just now';
+        if (!$full) {
+            $string = array_slice($string, 0, 1);
+        }
+
+        return $string ? implode(', ', $string).' ago' : 'just now';
     }
 }

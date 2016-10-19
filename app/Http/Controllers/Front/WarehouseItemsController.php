@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use DB;
 use App\Items\WarehouseItems;
 
 class WarehouseItemsController extends Controller
