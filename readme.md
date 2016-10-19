@@ -1,8 +1,8 @@
 - <a href="#e-manage">Welcome</a>
 - <a href="#setup">Setup</a>
-- <a href="noric1902.github.io/e-manage/docs">Documentation</a>
+- <a href="http://noric1902.github.io/e-manage/docs">Documentation</a>
 - <a href="#mockups">Mockups</a>
-- <a href="noric1902.github.io/e-manage/blog">Dev Blog</a>
+- <a href="http://noric1902.github.io/e-manage/blog">Dev Blog</a>
 
 ### e-manage
 
