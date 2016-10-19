@@ -14,7 +14,7 @@ class WarehouseItemsController extends Controller
     public function in_warehouse()
     {
         $data['items'] = WarehouseItems::join('users','item_in_warehouse.by_staff','=','users.username')
-                        ->paginate(5);
+                        ->paginate(10);
 
         return view('front.items.in_warehouse.in_warehouse', $data);
     }
