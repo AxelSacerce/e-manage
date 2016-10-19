@@ -2,6 +2,19 @@
 @section('title')
   In Warehouse Items
 @stop
+@section('custom_js_top')
+<script type="text/javascript">
+function show_sidebar()
+{
+document.getElementById('sidebar').style.visibility="visible";
+}
+
+function hide_sidebar()
+{
+document.getElementById('sidebar').style.visibility="hidden";
+}
+</script>
+@stop
 @section('main')
   <div class="container">
     <div class="panel panel-primary">
@@ -32,29 +45,45 @@
               <th>Quantity</th>
               <th>Supplier</th>
               <th>Added by</th>
+              <th>Modify</th>
             </tr>
           </thead>
 
           <tbody>
+            <!-- {{ $i = ($items->currentpage()-1)*$items->perpage()+1 }} -->
             @foreach($items as $item)
             <tr>
-              <th scope="row">1</th>
+              <th scope="row">{{ $i++ }}</th>
               <td>{{ $item->item_name }}</td>
               <td>{{ $item->item_quantity }}</td>
               <td>{{ $item->item_supplier }}</td>
-              <td><span data-toggle="tooltip" data-placement="right" title="{{ '@'.$item->by_staff }}">
-                @if($item->username=="admin")
-                  <b style="color:blue">{{ $item->name }}</b>
-                @else
-                  {{ $item->name }}
-                @endif
-              </span></td>
+              <td>
+                <span data-toggle="tooltip" data-placement="right" title="{{ '@'.$item->by_staff }}">
+                  @if($item->username=="admin")
+                    <b style="color:blue">{{ $item->name }}</b>
+                  @else
+                    {{ $item->name }}
+                  @endif
+                </span>
+              </td>
+              <td>
+                <a href="{{ url('/items/in-warehouse/edit/id').'/'.$item->id_item }}" data-toggle="tooltip" data-placement="top" title="Edit">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a href="{{ url('/items/in-warehouse/delete/id').'/'.$item->id_item }}" data-toggle="tooltip" data-placement="top" title="Delete">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+              </td>
             </tr>
             @endforeach
           </tbody>
         </table>
         <center>
           {{ $items->links() }}
+        </center>
+        <center>
+          Showing {{($items->currentpage()-1)*$items->perpage()+1}} to {{$items->currentpage()*$items->perpage()}}
+            of  {{$items->total()}} total items
         </center>
         <!-- <center>
           <nav aria-label="">

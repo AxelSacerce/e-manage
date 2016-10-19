@@ -46,6 +46,10 @@ ul li, ul, li {
 	list-style: none;
 }
 
+table a {text-decoration: none;}
+table i {color: #ccc;padding: 0px 5px 0px 5px;border:none;}
+table i:hover {color:#333333;transition: ease-out 0.2s}
+
 /*select option {padding: 10px;margin-left: 10px;}*/
 
 .container {border:solid 1px #eee;padding-top: 15px;background: #f6f6f6;margin-bottom: 25px;}
