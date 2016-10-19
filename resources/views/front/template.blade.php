@@ -105,7 +105,7 @@
     <footer id="footer">
       <div>
         <center>
-          <a href="https://github.com/noric1902/e-manage" data-toggle="tooltip" data-placement="top" title="Send an issue to contribute">Contribute</a>
+          <a href="https://github.com/noric1902/e-manage/issues/new?title=Contributing%20e-manage%20system&body=Hello%20noric1902," data-toggle="tooltip" data-placement="top" title="Send an issue to contribute">Contribute</a>
           <a href="">Copyright <!--(DMCA)--></a>
           <a href="https://github.com/noric1902">@noric1902</a>
         </center>
