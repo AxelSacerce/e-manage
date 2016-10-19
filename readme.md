@@ -17,7 +17,7 @@ Email me for database, haven't time to create migrations
 - create database (database name: e-manage)
 - php artisan migrate
 - php artisan db:seed
-- php artisan serve (Server running on http://localhost:8080)
+- php artisan serve (Server running on http://localhost:8000)
 - require internet connection for running
 
 # mockups
