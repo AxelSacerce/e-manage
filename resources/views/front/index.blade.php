@@ -16,11 +16,13 @@ use App\Http\Controllers\Front\HomeController;
 @section('main')
 
   <div class="container">
-    <div class="panel">
-    <div class="panel-body">
-      <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
-    </div>
-    </div>
+    @if(auth::check())
+      <div class="panel">
+      <div class="panel-body">
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
+      </div>
+      </div>
+    @endif
 
     <div class="panel">
     <div class="panel-body">

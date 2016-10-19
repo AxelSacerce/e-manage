@@ -36,18 +36,27 @@
           </thead>
 
           <tbody>
+            @foreach($items as $item)
             <tr>
-              @foreach($items as $item)
               <th scope="row">1</th>
               <td>{{ $item->item_name }}</td>
               <td>{{ $item->item_quantity }}</td>
               <td>{{ $item->item_supplier }}</td>
-              <td>{{ "@".$item->by_staff }}</td>
-              @endforeach
+              <td><span data-toggle="tooltip" data-placement="right" title="{{ '@'.$item->by_staff }}">
+                @if($item->username=="admin")
+                  <b style="color:blue">{{ $item->name }}</b>
+                @else
+                  {{ $item->name }}
+                @endif
+              </span></td>
             </tr>
+            @endforeach
           </tbody>
         </table>
         <center>
+          {{ $items->links() }}
+        </center>
+        <!-- <center>
           <nav aria-label="">
             <ul class="pagination">
               <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
@@ -61,7 +70,7 @@
               <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
             </ul>
           </nav>
-        </center>
+        </center> -->
     </div>
     </div>
   </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Items\WarehouseItems;
+use Illuminate\Support\Facades\DB;
+
 
 class WarehouseItemsController extends Controller
 {
@@ -11,7 +13,8 @@ class WarehouseItemsController extends Controller
 
     public function in_warehouse()
     {
-        $data['items'] = WarehouseItems::get();
+        $data['items'] = WarehouseItems::join('users','item_in_warehouse.by_staff','=','users.username')
+                        ->paginate(5);
 
         return view('front.items.in_warehouse.in_warehouse', $data);
     }

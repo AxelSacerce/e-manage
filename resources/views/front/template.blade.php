@@ -71,7 +71,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             @if(Auth::guest())
-              <li><a href="{!! url('/login') !!}">Sign In</a></li>
+              <li data-toggle="tooltip" data-placement="bottom" title="click to sign in"><a href="{!! url('/login') !!}">Sign In</a></li>
               <li><a href="{!! url('/register') !!}">Sign Up</a></li>
             @endif
             @if(Auth::check())
