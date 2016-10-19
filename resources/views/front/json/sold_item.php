@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controller\Front\SoldItemsController;
 
 header('Content-type: application/json; charset=UTF-8');
 
@@ -13,11 +12,11 @@ header('Content-type: application/json; charset=UTF-8');
 // echo json_encode($ret);
 
 
-foreach($sold_i as $row) {
-  $qty      = $row['item_quantity'];
-  $datetime = $row['added_at'];
-  $added_at = strtotime($datetime)*1000;
-  $data[]   = [$added_at, $qty];
+foreach ($sold_i as $row) {
+    $qty = $row['item_quantity'];
+    $datetime = $row['added_at'];
+    $added_at = strtotime($datetime) * 1000;
+    $data[] = [$added_at, $qty];
 }
 echo json_encode($data, JSON_NUMERIC_CHECK);
 
@@ -31,6 +30,4 @@ echo json_encode($data, JSON_NUMERIC_CHECK);
 //     )
 //   );
 // }
-// echo json_encode($arrdata);
-
-?>
+// echo json_encode($arrdata);;
