@@ -15,7 +15,7 @@
 Route::get('/', 'Front\HomeController@index');
 
 // Language
-Route::get('language/{lang}', 'Front\HomeController@language')->where('lang', implode('|', config('app.languages')));
+Route::get('lang/{lang}', 'Front\HomeController@lang')->where('lang', implode('|', config('app.available_locales')));
 
 Auth::routes();
 

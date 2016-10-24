@@ -79,7 +79,7 @@ return [
     // App::setLocale('en');
     'locale' => 'en',
 
-    'languages' => ['en', 'id'],
+    'available_locales' => ['en', 'id'],
 
     /*
     |--------------------------------------------------------------------------

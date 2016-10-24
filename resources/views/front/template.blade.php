@@ -2,7 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>@yield('title') - nurodigital</title>
+    <title>
+      @if(isset($title))
+        @yield('title')
+      @else
+        {{ trans("front/site.$current_section.title") }}
+      @endif
+    </title>
     <!-- CSS -->
       <link rel="stylesheet" type="text/css" href="{{ asset('/css/custom_style.css') }}">
       <link rel="stylesheet" href="{{ asset('/bootstrap/dist/theme/paper/bootstrap.min.css') }}" media="screen" title="no title" charset="utf-8">
@@ -49,7 +55,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{!! url('/') !!}">{{ trans('front/site.home') }} <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="{!! url('/') !!}">{{ trans("front/site.menu.home") }} <span class="sr-only">(current)</span></a></li>
             @if(Auth::check())
               <!-- <li><a href="#"></a></li> -->
             <li class="dropdown">
@@ -71,8 +77,8 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             @if(Auth::guest())
-              <li data-toggle="tooltip" data-placement="bottom" title="click to sign in"><a href="{!! url('/login') !!}">Sign In</a></li>
-              <li><a href="{!! url('/register') !!}">Sign Up</a></li>
+              <li data-toggle="tooltip" data-placement="bottom" title="click to sign in"><a href="{!! url('/login') !!}">{{ trans('front/site.menu.sign_in') }}</a></li>
+              <li><a href="{!! url('/register') !!}">{{ trans('front/site.menu.sign_out') }}</a></li>
             @endif
             @if(Auth::check())
             <li class="dropdown">
@@ -87,10 +93,10 @@
             </li>
             @endif
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('front/site.langname') }} <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('front/site.menu.langname') }} <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="{!! url('language') !!}/id">Indonesia</a></li>
-                <li><a href="{!! url('language') !!}/en">English</a></li>
+                <li><a href="{!! url('/lang') !!}/id">Indonesia</a></li>
+                <li><a href="{!! url('/lang') !!}/en">English</a></li>
               </ul>
             </li>
           </ul>

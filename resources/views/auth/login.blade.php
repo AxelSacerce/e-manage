@@ -1,5 +1,5 @@
 @extends('front.template')
-@section('title') Login Page @stop
+@section('title') {{ trans("front.site.$current_section.title") }} @stop
 @section('main')
 <div class="container">
     <div class="row">

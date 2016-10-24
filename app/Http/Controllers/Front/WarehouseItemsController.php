@@ -7,7 +7,7 @@ use App\Items\WarehouseItems;
 
 class WarehouseItemsController extends Controller
 {
-    protected $session = 'warehouse_items';
+    protected $section = 'warehouse_items';
 
     public function in_warehouse()
     {

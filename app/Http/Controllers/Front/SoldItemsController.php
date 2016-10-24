@@ -8,6 +8,8 @@ use DB;
 
 class SoldItemsController extends Controller
 {
+    protected $section = 'sold_item';
+
     public function getAllItem()
     {
         $data['sold_i'] = SoldItems::select('added_at', DB::raw('SUM(item_quantity) as item_quantity'))

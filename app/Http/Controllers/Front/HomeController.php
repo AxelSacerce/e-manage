@@ -14,6 +14,7 @@ use Session;
 class HomeController extends Controller
 {
     protected $redirectTo = '/';
+    protected $section = 'home';
 
     public function index()
     {
@@ -27,9 +28,9 @@ class HomeController extends Controller
         return view('front.index', $data);
     }
 
-    public function language($lang)
+    public function lang($lang)
     {
-        $language = in_array($lang, config('app.languages')) ? $lang : config('app.fallback_locale');
+        $language = in_array($lang, config('app.available_locales')) ? $lang : config('app.fallback_locale');
         session()->set('locale', $language);
 
         return back();
