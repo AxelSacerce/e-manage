@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Redirect;
 use Session;
+use Lang;
 
 class HomeController extends Controller
 {
@@ -39,27 +40,27 @@ class HomeController extends Controller
     public function doLogin()
     {
         $rules = [
-        'username'  => 'required',
-        'password'  => 'required',
-      ];
+          'username'  => 'required',
+          'password'  => 'required',
+        ];
 
         $validator = Validator::make(Input::all(), $rules);
 
         if ($validator->fails()) {
-            return Redirect::to('login')
+          return Redirect::to('login')
           ->withErrors($validator)
           ->withInput(Input::except('password'));
         } else {
-            $userdata = [
+          $userdata = [
           'username'  => Input::get('username'),
           'password'  => Input::get('password'),
         ];
 
-            if (Auth::attempt($userdata)) {
-                return Redirect::to('/');
-            } else {
-                return Redirect::to('/login');
-            }
+        if (Auth::attempt($userdata)) {
+            return Redirect::to('/');
+          } else {
+            echo "ok";
+          }
         }
     }
 
@@ -80,17 +81,17 @@ class HomeController extends Controller
         $diff->d -= $diff->w * 7;
 
         $string = [
-            'y' => 'year',
-            'm' => 'month',
-            'w' => 'week',
-            'd' => 'day',
-            'h' => 'hour',
-            'i' => 'minute',
-            's' => 'second',
+            'y' => trans("front/site.home.recent.y"),
+            'm' => trans("front/site.home.recent.m"),
+            'w' => trans("front/site.home.recent.w"),
+            'd' => trans("front/site.home.recent.d"),
+            'h' => trans("front/site.home.recent.h"),
+            'i' => trans("front/site.home.recent.i"),
+            's' => trans("front/site.home.recent.s"),
         ];
         foreach ($string as $k => &$v) {
             if ($diff->$k) {
-                $v = $diff->$k.' '.$v.($diff->$k > 1 ? 's' : '');
+                $v = $diff->$k.' '.$v.($diff->$k > 1 ? trans("front/site.home.recent.more_than_one") : '');
             } else {
                 unset($string[$k]);
             }
@@ -100,6 +101,6 @@ class HomeController extends Controller
             $string = array_slice($string, 0, 1);
         }
 
-        return $string ? implode(', ', $string).' ago' : 'just now';
+        return $string ? implode(', ', $string). ' ' . trans("front/site.home.recent.ago") : ' ' . trans("front/site.home.recent.just_now");
     }
 }

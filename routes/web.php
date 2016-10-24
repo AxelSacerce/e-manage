@@ -12,7 +12,10 @@
 */
 
 // Base Route
-Route::get('/', 'Front\HomeController@index');
+Route::get('/', [
+  'as' => 'home',
+  'uses' => 'Front\HomeController@index'
+]);
 
 // Language
 Route::get('lang/{lang}', 'Front\HomeController@lang')->where('lang', implode('|', config('app.available_locales')));
@@ -20,7 +23,7 @@ Route::get('lang/{lang}', 'Front\HomeController@lang')->where('lang', implode('|
 Auth::routes();
 
 Route::post('/login', [
-  'uses'  => 'Front\HomeController@doLogin',
+  'uses'  => 'Front\HomeController@doLogin'
 ]);
 
 Route::post('/register', [

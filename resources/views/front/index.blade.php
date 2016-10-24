@@ -46,13 +46,26 @@ use App\Http\Controllers\Front\HomeController;
             <label><a href="">{{ $items->item_name }}</a></label>
             <span>{{ HomeController::time_elapsed_string($items->added_at, false) }}</span>
             / {{ date('d-m-Y H:m:s', strtotime($items->added_at)) }}
-            <div class="info">{{ $items->item_quantity }} unit <a href="{{ url('/item/'.strtolower($items->item_name)) }}">
+            <div class="info">
+              {{ $items->item_quantity }}
+              {{ trans("front/site.$current_section.recent.unit") }}
+              <a href="{{ url('/item/'.strtolower($items->item_name)) }}">
               @if( $items->item_quantity > 1)
-                {{ $items->item_name }}s
+                {{ $items->item_name }}{{ Lang::locale() == 'id' ? '' : 's' }}
               @else
                 {{ $items->item_name }}
               @endif
-            </a> from <a href="{{ url('/supplier/'.strtolower($items->item_supplier)) }}">{{ $items->item_supplier }}</a> {{ $items->identity_id == 1 ? 'enter the' : 'out from' }} warehouse managed by <a href="{{ url('/staff/'.strtolower($items->by_staff)) }}">{{ $items->by_staff }}</a> on <?php echo date('D, M d <\s\u\p\>S</\s\u\p> Y', strtotime($items->added_at)) ?>.</div>
+              </a> {{ trans("front/site.$current_section.recent.from") }} <a href="{{ url('/supplier/'.strtolower($items->item_supplier)) }}">{{ $items->item_supplier }}</a>
+              @if($items->identity_id == 1)
+                {{ trans("front/site.$current_section.recent.enter_the") }}
+              @else
+                {{ trans("front/site.$current_section.recent.out_from") }}
+              @endif
+              {{ trans("front/site.$current_section.recent.managed_by") }}
+              <a href="{{ url('/staff/'.strtolower($items->by_staff)) }}">{{ $items->by_staff }}</a>
+              {{ trans("front/site.$current_section.recent.on") }}
+              <?php echo date('D, M d <\s\u\p\>S</\s\u\p> Y', strtotime($items->added_at)) ?>
+            </div>
           </li>
           @endforeach
         </ul>
