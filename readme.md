@@ -14,7 +14,7 @@ Status : Under Development
 
 Design inspired from <a href="http://new.ppy.sh">new.ppy.sh</a>
 
-Send me email (<a href="mailto:ahmad.uji1902@gmail.com">`ahmad.uji1902@gmail.com`</a>) for database, haven't time to create migrations 
+Database : <a href="https://drive.google.com/drive/folders/0B0PjYTN6sranUVhKZW1wVE4wVUE?usp=sharing">Google Drive</a>
 
 ### Requirement
 
