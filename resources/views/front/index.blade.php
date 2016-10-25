@@ -30,7 +30,7 @@ use App\Http\Controllers\Front\HomeController;
         <h6>Recent Item</h6>
         <hr>
         <div>filter section</div>
-        <ul>
+        <ul id="recentItems">
           <!-- <li class="in">
             <label><a href="">Item Name</a></label>
             <span>2 hours ago</span>
@@ -69,7 +69,7 @@ use App\Http\Controllers\Front\HomeController;
           </li>
           @endforeach
         </ul>
-        <center><a href="" class="show_more">show more</a></center>
+        <center><div id="loadMore" class="show_more">{{ trans("front/site.$current_section.recent.show_more") }}</div></center>
       </div>
     </div>
     </div>
@@ -149,5 +149,20 @@ use App\Http\Controllers\Front\HomeController;
         });
     });
     });
+
+    // show more
+    $(document).ready(function () {
+      size_li = $("#recentItems li").size();
+      x=3;
+      $('#recentItems li:lt('+x+')').show();
+      $('#loadMore').click(function () {
+          x= (x+5 <= size_li) ? x+5 : size_li;
+          $('#recentItems li:lt('+x+')').show();
+           $('#showLess').show();
+          if(x == size_li){
+              $('#loadMore').hide();
+          }
+      });
+  });
   </script>
 @stop

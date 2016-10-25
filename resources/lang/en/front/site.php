@@ -22,7 +22,8 @@ return [
       'out_from' => 'out from',
       'managed_by' => 'warehouse managed by',
       'on' => 'on',
-      'from' => 'from'
+      'from' => 'from',
+      'show_more' => 'show more'
     ],
     'title' => 'Dashboard'
   ],

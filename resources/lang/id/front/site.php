@@ -22,7 +22,8 @@ return [
       'out_from' => 'keluar dari',
       'managed_by' => 'gudang dikelola oleh',
       'on' => 'pada',
-      'from' => 'dari'
+      'from' => 'dari',
+      'show_more' => 'lihat lebih banyak'
     ],
     'title' => 'Dashboard',
   ],

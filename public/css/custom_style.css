@@ -83,5 +83,7 @@ table i:hover {color:#333333;transition: ease-out 0.2s}
 #recent label {color: #2196f3;font-size: 18px;}
 #recent span {float: right;position: relative;border: none;}
 #recent .info {font-size: 12px;font-style: italic;}
-#recent .show_more {font-size: 12px;}
+#recent .show_more {font-size: 12px;width: 100%;cursor: pointer;background-color: #eee;padding: 5px;font-weight: bold;}
+#recent .show_more:hover {transition: ease-in 0.1s;color: #000;}
 #recent .show_more:hover {text-decoration: none;font-variant: inherit;}
+#recent #recentItems li {display: none;}
