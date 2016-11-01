@@ -6,7 +6,7 @@
       @if(isset($title))
         @yield('title')
       @else
-        {{ trans("front/site.$current_section.title") }}
+        {{ trans("front/site.home.title") }}
       @endif
     </title>
     <!-- CSS -->
