@@ -41,11 +41,13 @@
     <div id="wrapper">
       @include('front.templates.menu')
     <!-- START OF SECTION MAIN -->
-      <div id="wrapper">
-        @yield('main')
-      </div>
+      <div class="outer">
+        <div class="inner">
+          <!-- <div id="wrapper"> -->
+            @yield('main')
+          <!-- </div> -->
     <!-- END OF SECTION MAIN -->
-    <footer id="footer">
+    <footer>
       <div>
         <center>
           <a href="https://github.com/noric1902/e-manage/issues/new?title=Contributing%20e-manage%20system&body=Hello%20noric1902," data-toggle="tooltip" data-placement="top" title="Send an issue to contribute">{{ trans("front/site.home.footer.contribute") }}</a>
@@ -61,6 +63,8 @@
       </div>
     </footer>
     </div>
+    </div>
+  </div>
     <script type="text/javascript">
       $(window).bind("load", function() {
        var footerHeight = 0,

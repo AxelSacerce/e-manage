@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Redirect;
 use Session;
 use Lang;
+use App\Login;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -36,11 +38,13 @@ class HomeController extends Controller
         return back();
     }
 
-    public function doLogin()
+    public function doLogin(Request $request)
     {
+        // Basic Rules
+
         $rules = [
-          'username'  => 'required',
-          'password'  => 'required',
+          'username'  => 'required|min:5',
+          'password'  => 'required|min:5',
         ];
 
         $validator = Validator::make(Input::all(), $rules);
@@ -55,10 +59,14 @@ class HomeController extends Controller
           'password'  => Input::get('password'),
         ];
 
-        if (Auth::attempt($userdata)) {
+        $field = filter_var($request->input('username'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $request->merge([$field => $request->input('username')]);
+
+        if (Auth::attempt($request->only($field, 'password'))) {
             return Redirect::to('/');
           } else {
-            echo "ok";
+            return Redirect::to('login')
+            ->with('message', 'Username or Password Incorrect');
           }
         }
     }

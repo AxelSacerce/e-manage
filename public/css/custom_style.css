@@ -8,17 +8,17 @@ body {position: relative;height:100%;}
 div h6 {color:#2196f3;text-align: center;}
 
 footer {
-	/*margin-top: 20px;*/
+	margin-top: 20px;
 	background-color: #ffffff;
-	/*clear: both;*/
+	clear: both;
 	width:100%;
-	/*right: 0;*/
-	/*bottom:0px;*/
-	/*padding:10px 0px 10px 0px;*/
-	/*height: auto;*/
-	/*border-top:solid 1px #ccc;*/
-	/*display: flex;
-	flex-direction: column;*/
+	right: 0;
+	bottom:0;
+	padding:10px 0px 10px 0px;
+	border-top:solid 1px #ccc;
+	display: flex;
+	flex-direction: column;
+	position: relative;
 }
 
 footer div {
@@ -51,6 +51,18 @@ table i {color: #ccc;padding: 0px 5px 0px 5px;border:none;}
 table i:hover {color:#333333;transition: ease-out 0.2s}
 
 /*select option {padding: 10px;margin-left: 10px;}*/
+
+.outer {
+	display: table;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.inner {
+	display: table-cell;
+	width: 100%;
+}
 
 .container {border:solid 1px #eee;padding-top: 15px;background: #f6f6f6;margin-bottom: 25px;}
 
@@ -87,3 +99,10 @@ table i:hover {color:#333333;transition: ease-out 0.2s}
 #recent .show_more:hover {transition: ease-in 0.1s;color: #000;}
 #recent .show_more:hover {text-decoration: none;font-variant: inherit;}
 #recent #recentItems li {display: none;}
+
+.err-message {
+	padding-bottom: 30px;
+	text-align: center;
+	color: red;
+	font-weight: bold;
+}
