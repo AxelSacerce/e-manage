@@ -40,6 +40,6 @@ return [
     'langname' => 'Language',
     'home' => 'Home',
     'sign_in' => 'Sign In',
-    'register' => 'Sign Up'
+    'user_management' => 'User Management'
   ],
 ];

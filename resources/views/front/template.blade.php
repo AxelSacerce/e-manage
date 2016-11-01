@@ -17,7 +17,7 @@
       <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
       <style media="screen">
       @keyframes blink {
-      to { color: red; }
+        to { color: red; }
       }
 
       .my-element {

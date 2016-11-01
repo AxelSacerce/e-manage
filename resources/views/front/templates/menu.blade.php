@@ -37,7 +37,6 @@
     <ul class="nav navbar-nav navbar-right">
       @if(Auth::guest())
         <li data-toggle="tooltip" data-placement="bottom" title="click to sign in"><a href="{!! url('/login') !!}">{{ trans("front/site.menu.sign_in") }}</a></li>
-        <li><a href="{!! url('/register') !!}">{{ trans("front/site.menu.register") }}</a></li>
       @endif
       @if(Auth::check())
       <li class="dropdown">
@@ -47,6 +46,7 @@
         </a>
         <ul class="dropdown-menu">
           <li><a href="{!! url('/settings') !!}">Settings</a></li>
+          <li><a href="{!! url('/user_management') !!}">{{ trans("front/site.menu.user_management") }}</a></li>
           <li><a href="{!! url('/logout') !!}">Sign Out</a></li>
         </ul>
       </li>

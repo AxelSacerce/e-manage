@@ -40,6 +40,6 @@ return [
     'langname' => 'Bahasa',
     'home' => 'Beranda',
     'sign_in' => 'Masuk',
-    'register' => 'Daftar'
+    'user_management' => 'Manajemen Pengguna'
   ],
 ];
